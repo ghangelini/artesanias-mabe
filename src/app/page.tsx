@@ -66,7 +66,7 @@ const getDefaultProducts = (): Product[] => [
   {
     id: '7',
     name: 'Porta Sahumerio',
-    price: 3500,
+    price: 9500,
     image: 'https://dcdn-us.mitiendanube.com/stores/006/219/336/products/whatsapp-image-2025-05-14-at-3-06-56-pm-079f0d601395675f0217472523807101-480-0.webp',
     stock: 15,
     description: 'Porta sahumerio decorativo, disponible en varios diseños.',
