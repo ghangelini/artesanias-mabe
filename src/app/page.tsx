@@ -66,7 +66,7 @@ const getDefaultProducts = (): Product[] => [
   {
     id: '7',
     name: 'Porta Sahumerio',
-    price: 9500,
+    price: 4000,
     image: 'https://dcdn-us.mitiendanube.com/stores/006/219/336/products/whatsapp-image-2025-05-14-at-3-06-56-pm-079f0d601395675f0217472523807101-480-0.webp',
     stock: 15,
     description: 'Porta sahumerio decorativo, disponible en varios diseños.',
@@ -82,7 +82,7 @@ const getDefaultProducts = (): Product[] => [
   {
     id: '9',
     name: 'Vasija Ovillera',
-    price: 42000,
+    price: 32000,
     image: 'https://dcdn-us.mitiendanube.com/stores/006/219/336/products/whatsapp-image-2025-05-14-at-3-13-36-pm-d7f18211033a82a02617472522847255-480-0.webp',
     stock: 5,
     description: 'Vasija diseñada especialmente para ovillar lana sin enredos.',
@@ -90,7 +90,7 @@ const getDefaultProducts = (): Product[] => [
   {
     id: '10',
     name: 'Set de 3 Cuencos en Cerámica',
-    price: 25000,
+    price: 28000,
     image: 'https://dcdn-us.mitiendanube.com/stores/006/219/336/products/3-cuencos-x-20-2d355a924a3ad2c52e17472480013245-480-0.webp',
     stock: 6,
     description: 'Juego de tres cuencos de diferentes tamaños coordinados.',
@@ -98,7 +98,7 @@ const getDefaultProducts = (): Product[] => [
   {
     id: '11',
     name: 'Cuencos Rústicos en Cerámica',
-    price: 9000,
+    price: 11000,
     image: 'https://dcdn-us.mitiendanube.com/stores/006/219/336/products/cuencos-rusticos-x-10-76daaaa20867798d2517472434318167-480-0.webp',
     stock: 18,
     description: 'Cuencos individuales con terminación rústica y artesanal.',
@@ -122,7 +122,7 @@ const getDefaultProducts = (): Product[] => [
   {
     id: '14',
     name: 'Porta Espiral',
-    price: 3000,
+    price: 8000,
     image: 'https://dcdn-us.mitiendanube.com/stores/006/219/336/products/whatsapp-image-2025-05-14-at-2-11-19-pm-27e10003208e3a24eb17472427444110-480-0.webp',
     stock: 8,
     description: 'Porta espiral decorativo y funcional para el hogar o jardín.',
