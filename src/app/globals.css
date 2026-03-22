@@ -1,0 +1,54 @@
+/* --- CONFIGURACIÓN DE TAIWIND --- */
+@import "tailwindcss";
+
+/* --- CONFIGURACIÓN ESTRATEGIA MODO OSCURO (TAILWIND 4) --- */
+/* Esto permite que las clases 'dark:' funcionen cuando hay una clase .dark en el <html> */
+@variant dark (&:where(.dark, .dark *));
+
+/* --- VARIABLES DE COLOR (TEMA CLARO Y OSCURO) --- */
+:root {
+  --background: #faef90; /* Fondo crema/amarillento elegido por el usuario */
+  --foreground: #171717;
+  color-scheme: light;
+}
+
+:root.dark {
+  --background: #000000;
+  --foreground: #ededed;
+  color-scheme: dark;
+}
+
+/* --- EXTENSIÓN DEL TEMA DE TAIWIND --- */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* --- ESTILOS BASE DEL CUERPO (BODY) --- */
+body {
+  font-family: var(--font-inter), sans-serif;
+  color: var(--foreground);
+  background: var(--background);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- ESTILOS DE TIPOGRAFÍA PARA TÍTULOS --- */
+h1,
+h2,
+h3,
+h4,
+.font-outfit {
+  font-family: var(--font-outfit), sans-serif;
+}
+
+/* --- ANIMACIÓN FADE-IN PARA CAMBIO DE IMAGEN EN MODAL --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease forwards;
+}
