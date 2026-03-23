@@ -12,6 +12,10 @@ interface Order {
   total_amount: number;
   status: string;
   created_at: string;
+  customer_name?: string;
+  customer_email?: string;
+  customer_phone?: string;
+  shipping_address?: string;
 }
 
 export default function AdminDashboard() {
@@ -149,7 +153,7 @@ export default function AdminDashboard() {
                       Fecha
                     </th>
                     <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                      ID Pago (MP)
+                      Cliente
                     </th>
                     <th scope="col" className="px-6 py-4 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Estado
@@ -173,7 +177,16 @@ export default function AdminDashboard() {
                           {new Date(order.created_at).toLocaleString('es-AR')}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                          {order.mp_payment_id || 'N/A'}
+                          {order.customer_name ? (
+                            <div>
+                              <p className="font-semibold text-gray-900 dark:text-gray-200">{order.customer_name}</p>
+                              <p className="text-xs">{order.customer_email}</p>
+                              <p className="text-xs">{order.customer_phone}</p>
+                              {order.shipping_address && <p className="text-xs text-amber-600 truncate max-w-[150px]" title={order.shipping_address}>{order.shipping_address}</p>}
+                            </div>
+                          ) : (
+                            <span className="text-xs">Sin datos ({order.mp_payment_id || 'N/A'})</span>
+                          )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className={`px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${

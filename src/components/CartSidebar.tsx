@@ -12,13 +12,26 @@ interface CartSidebarProps {
 
 const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => {
   const { cart, removeFromCart, updateQuantity, totalPrice, totalItems } = useCart();
+  const [customerInfo, setCustomerInfo] = React.useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: ''
+  });
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const handleCheckout = async () => {
+    if (!customerInfo.name || !customerInfo.email || !customerInfo.phone || !customerInfo.address) {
+      alert("Por favor completa todos tus datos de envío antes de pagar.");
+      return;
+    }
+    
+    setIsSubmitting(true);
     try {
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: cart }),
+        body: JSON.stringify({ items: cart, customer: customerInfo }),
       });
       const data = await response.json();
       if (data.init_point) {
@@ -29,6 +42,8 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => {
     } catch (error) {
       console.error('Checkout error:', error);
       alert('Error al iniciar el pago.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -126,7 +141,44 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => {
 
             {cart.length > 0 && (
               <div className="p-6 border-t border-gray-100 bg-gray-50/50 space-y-4">
-                <div className="flex justify-between text-lg">
+                
+                {/* Formulario de Compra */}
+                <div className="space-y-3 mb-4">
+                  <h4 className="font-semibold text-gray-800 text-sm">Datos de Envío</h4>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Nombre Completo"
+                    value={customerInfo.name}
+                    onChange={(e) => setCustomerInfo({...customerInfo, name: e.target.value})}
+                    className="w-full text-sm px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-amber-500 outline-none"
+                  />
+                  <input
+                    type="email"
+                    required
+                    placeholder="Correo Electrónico"
+                    value={customerInfo.email}
+                    onChange={(e) => setCustomerInfo({...customerInfo, email: e.target.value})}
+                    className="w-full text-sm px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-amber-500 outline-none"
+                  />
+                  <input
+                    type="tel"
+                    required
+                    placeholder="Teléfono (ej: 1123456789)"
+                    value={customerInfo.phone}
+                    onChange={(e) => setCustomerInfo({...customerInfo, phone: e.target.value})}
+                    className="w-full text-sm px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-amber-500 outline-none"
+                  />
+                  <textarea
+                    required
+                    placeholder="Dirección Completa (Calle, Altura, Piso, Depto, Ciudad)"
+                    value={customerInfo.address}
+                    onChange={(e) => setCustomerInfo({...customerInfo, address: e.target.value})}
+                    className="w-full text-sm px-3 py-2 border border-gray-300 rounded-lg focus:ring-1 focus:ring-amber-500 outline-none resize-none h-16"
+                  />
+                </div>
+
+                <div className="flex justify-between text-lg pt-2 border-t border-gray-200">
                   <span className="text-gray-600">Total</span>
                   <span className="font-extrabold text-amber-900 text-2xl">
                     ${totalPrice.toLocaleString('es-AR')}
@@ -134,9 +186,10 @@ const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => {
                 </div>
                 <button
                   onClick={handleCheckout}
-                  className="w-full py-4 bg-amber-600 text-white rounded-2xl font-bold text-lg hover:bg-amber-700 transition-all active:scale-[0.98] shadow-lg shadow-amber-200"
+                  disabled={isSubmitting}
+                  className="w-full py-4 bg-amber-600 text-white rounded-2xl font-bold text-lg hover:bg-amber-700 transition-all active:scale-[0.98] shadow-lg shadow-amber-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Finalizar Compra
+                  {isSubmitting ? 'Procesando...' : 'Finalizar Compra'}
                 </button>
                 <p className="text-xs text-center text-gray-400">
                   Serás redirigido a Mercado Pago para completar tu pago de forma segura.
