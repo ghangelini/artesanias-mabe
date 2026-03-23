@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Plus } from 'lucide-react';
+import { Plus, MessageCircle } from 'lucide-react';
 import { Product, useCart } from '@/context/CartContext';
 import ImageModal from './ImageModal';
 
@@ -12,23 +12,62 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  // Swipe logic states
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Build the full images array (primary + extras)
   const allImages = product.images && product.images.length > 0
     ? [product.image, ...product.images]
     : [product.image];
 
-  // Show second image on hover (if available)
-  const displayImage = isHovered && allImages.length > 1 ? allImages[1] : allImages[0];
+  const handleMouseEnter = () => {
+    if (allImages.length > 1 && imageIndex === 0) {
+      setImageIndex(1);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setImageIndex(0);
+  };
+
+  // Touch handlers
+  const minSwipeDistance = 40;
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  const onTouchEndHandler = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && allImages.length > 1) {
+      setImageIndex((prev) => (prev + 1) % allImages.length);
+    }
+    if (isRightSwipe && allImages.length > 1) {
+      setImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+    }
+  };
+
+  const displayImage = allImages[imageIndex] || allImages[0];
 
   return (
     <div className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800">
       <div
         className="aspect-square relative overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-zoom-in"
         onClick={() => setIsModalOpen(true)}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEndHandler}
       >
         <img
           src={displayImage}
@@ -44,7 +83,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               <span
                 key={i}
                 className={`block w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                  (isHovered ? 1 : 0) === i
+                  imageIndex === i
                     ? 'bg-white scale-125'
                     : 'bg-white/50'
                 }`}
@@ -90,9 +129,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               href={`https://wa.me/5491169962617?text=${encodeURIComponent(`Hola Mabe! Quería saber si vas a reponer stock de: ${product.name}`)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center px-3 h-10 rounded-[14px] bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all shadow-sm text-xs font-bold leading-tight text-center"
+              onClick={(e) => e.stopPropagation()} // Evitar que el click se propague al card por si acaso
+              className="flex items-center gap-2 justify-center px-4 h-10 rounded-full bg-white dark:bg-zinc-800 border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all shadow-md text-sm font-bold whitespace-nowrap active:scale-95 group/btn"
+              title="Agotado - Consultar por WhatsApp"
             >
-              Consultar stock
+              <MessageCircle className="w-4 h-4 group-hover/btn:animate-pulse" />
+              <span>Sin Stock</span>
             </a>
           ) : (
             <button

@@ -13,6 +13,10 @@ interface ImageModalProps {
 const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, images, altText }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // Swipe logic states
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -47,6 +51,29 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, images, altTex
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, [isOpen, goPrev, goNext, onClose]);
+
+  // Touch Swipe Handlers Focus
+  const minSwipeDistance = 50;
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  const onTouchEndHandler = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && images.length > 1) {
+      goNext();
+    }
+    if (isRightSwipe && images.length > 1) {
+      goPrev();
+    }
+  };
 
   if (!isOpen && !isAnimating) return null;
 
@@ -98,12 +125,15 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, images, altTex
           isOpen ? 'scale-100' : 'scale-90'
         }`}
         onClick={(e) => e.stopPropagation()}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEndHandler}
       >
         <img
           key={currentIndex}
           src={images[currentIndex]}
           alt={`${altText} ${hasMultiple ? `- ${currentIndex + 1}/${images.length}` : ''}`}
-          className="rounded-xl shadow-2xl shadow-black/50 object-contain w-full h-full max-h-[85vh] animate-fadeIn"
+          className="rounded-xl shadow-2xl shadow-black/50 object-contain w-full h-full max-h-[85vh] animate-fadeIn pointer-events-none select-none"
         />
 
         {/* Caption + Dot indicators */}
