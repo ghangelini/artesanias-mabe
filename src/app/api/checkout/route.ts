@@ -23,6 +23,9 @@ export async function POST(req: Request) {
         failure: `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/failure`,
         pending: `${process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'}/pending`,
       },
+      notification_url: `${process.env.NEXT_PUBLIC_URL || 'https://tu-dominio.com'}/api/webhook`,
+      // external_reference puede usarse en un futuro si decidimos crear la orden *antes* de enviarlos a MP.
+      // Así mercado pago nos devuelve este ID en el webhook.
     };
 
     const response = await preference.create({ body });
