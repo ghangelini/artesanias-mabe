@@ -57,8 +57,8 @@ export default function AdminDashboard() {
 
       setOrders(data || []);
     } catch (err: any) {
-      console.error(err);
-      setErrorFetching('Error al cargar las ventas. Asegúrate de haber creado la tabla `orders` en Supabase.');
+      console.error('Detalle del error de Supabase:', err);
+      setErrorFetching(`Detalle del error: ${err?.message || err}. Revisa la consola para más detalles.`);
     } finally {
       setLoading(false);
     }

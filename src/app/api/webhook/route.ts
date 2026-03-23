@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
 // MercadoPago no tiene una SDK oficial actual que haga fetch simple por ID asique usaremos fetch normal para consultar el pago.
-const MP_ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN;
+const MP_ACCESS_TOKEN = process.env.MERCADO_PAGO_ACCESS_TOKEN || process.env.MP_ACCESS_TOKEN;
 
 export async function POST(req: Request) {
   try {
