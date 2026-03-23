@@ -85,13 +85,24 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               ${product.price.toLocaleString('es-AR')}
             </span>
           </div>
-          <button
-            onClick={() => addToCart(product)}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-amber-600 text-white hover:bg-amber-700 transition-all active:scale-95 shadow-lg shadow-amber-200"
-            aria-label="Agregar al carrito"
-          >
-            <Plus className="w-5 h-5" />
-          </button>
+          {product.stock !== undefined && product.stock <= 0 ? (
+            <a
+              href={`https://wa.me/5491169962617?text=${encodeURIComponent(`Hola Mabe! Quería saber si vas a reponer stock de: ${product.name}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center px-3 h-10 rounded-[14px] bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all shadow-sm text-xs font-bold leading-tight text-center"
+            >
+              Consultar stock
+            </a>
+          ) : (
+            <button
+              onClick={() => addToCart(product)}
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-amber-600 text-white hover:bg-amber-700 transition-all active:scale-95 shadow-lg shadow-amber-200"
+              aria-label="Agregar al carrito"
+            >
+              <Plus className="w-5 h-5" />
+            </button>
+          )}
         </div>
       </div>
 

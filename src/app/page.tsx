@@ -178,10 +178,39 @@ export default function Home() {
   // --- EFECTO PARA CARGAR PRODUCTOS ---
   useEffect(() => {
     async function fetchProducts() {
-      // Actualmente usa datos locales. Para usar la base de datos de Supabase, 
-      // deberías descomentar la lógica de supabase y filtrar/mapear los resultados.
-      setProducts(getDefaultProducts());
-      setLoading(false);
+      try {
+        const { data, error } = await supabase
+          .from('products')
+          .select('*')
+          .order('is_featured', { ascending: false, nullsFirst: false });
+
+        if (error) {
+          throw error;
+        }
+
+        if (data && data.length > 0) {
+          const formattedProducts: Product[] = data.map((item: any) => ({
+            id: item.id,
+            name: item.name,
+            description: item.description,
+            price: Number(item.price),
+            originalPrice: item.original_price ? Number(item.original_price) : undefined,
+            image: item.image,
+            images: item.images || [],
+            stock: Number(item.stock),
+            isFeatured: item.is_featured,
+          }));
+          setProducts(formattedProducts);
+        } else {
+          console.warn("No products found in db, using default mock.");
+          setProducts(getDefaultProducts());
+        }
+      } catch (err) {
+        console.error("Error fetching products from Supabase:", err);
+        setProducts(getDefaultProducts());
+      } finally {
+        setLoading(false);
+      }
     }
 
     fetchProducts();
