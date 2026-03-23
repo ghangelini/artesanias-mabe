@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Fondo cálido -->
+  <rect width="100" height="100" rx="20" fill="#D97706"/>
+  <!-- Iniciales AM con estilo artesanal elegante -->
+  <text x="50" y="65" font-family="Georgia, serif" font-size="45" font-weight="bold" fill="#FEF3C7" text-anchor="middle">AM</text>
+  <!-- Decoración inferior simulando una hoja o trazo hecho a mano -->
+  <path d="M 30 75 Q 50 85 70 75" stroke="#FEF3C7" stroke-width="3" fill="none" stroke-linecap="round" />
+</svg>
