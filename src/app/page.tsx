@@ -216,7 +216,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#fdfaf6] dark:bg-gray-950 pb-20 transition-colors duration-300">
+    <div className="min-h-screen bg-[#fdfaf6] pb-20 transition-colors duration-300">
       {/* Barra de navegación superior */}
       <Navbar onCartClick={() => setIsCartOpen(true)} />
 
@@ -225,12 +225,12 @@ export default function Home() {
 
       {/* --- GRILLA DE PRODUCTOS --- */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32">
-        <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-xl p-8 border border-gray-100 dark:border-gray-800 transition-colors duration-300">
+        <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 transition-colors duration-300">
           {/* Título de la sección de productos */}
           <div className="flex items-center gap-3 mb-10">
-            <ShoppingBag className="w-8 h-8 text-amber-600 dark:text-amber-500" />
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Tienda online</h2>
-            <div className="h-px flex-1 bg-gray-100 dark:bg-gray-800 ml-4 hidden md:block" />
+            <ShoppingBag className="w-8 h-8 text-amber-600" />
+            <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Tienda online</h2>
+            <div className="h-px flex-1 bg-gray-100 ml-4 hidden md:block" />
           </div>
 
           {/* Renderizado Condicional: Mientras carga muestra esqueletos (pulse), luego los productos Real */}
@@ -251,8 +251,8 @@ export default function Home() {
       </main>
 
       {/* --- PIE DE PÁGINA (FOOTER) --- */}
-      <footer className="mt-20 pt-16 border-t border-gray-200 dark:border-gray-800 text-center">
-        <p className="text-gray-400 dark:text-gray-500 text-sm">
+      <footer className="mt-20 pt-16 border-t border-gray-200 text-center">
+        <p className="text-gray-400 text-sm">
           © {new Date().getFullYear()} Artesanías Mabe. | Desarrollado por: {' '}
           <a
             href="https://www.linkedin.com/in/ghangelini/"

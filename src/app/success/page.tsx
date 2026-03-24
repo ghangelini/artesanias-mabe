@@ -16,15 +16,15 @@ function SuccessContent() {
   const whatsappUrl = `https://wa.me/${phoneOwner}?text=${whatsappMessage}`;
 
   return (
-    <div className="max-w-md w-full bg-white dark:bg-zinc-800 rounded-3xl shadow-xl overflow-hidden p-8 text-center border border-gray-100 dark:border-zinc-700">
-      <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-        <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-500" />
+    <div className="max-w-md w-full bg-white rounded-3xl shadow-xl overflow-hidden p-8 text-center border border-gray-100">
+      <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <CheckCircle2 className="w-10 h-10 text-green-600" />
       </div>
 
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+      <h1 className="text-3xl font-bold text-gray-900 mb-2">
         ¡Pago Exitoso!
       </h1>
-      <p className="text-gray-500 dark:text-gray-400 mb-8">
+      <p className="text-gray-500 mb-8">
         Tu pago se ha procesado correctamente. Hemos registrado tus datos de envío.
       </p>
 
@@ -41,7 +41,7 @@ function SuccessContent() {
 
         <Link
           href="/"
-          className="block w-full py-4 text-amber-600 dark:text-amber-500 font-semibold hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-xl transition-all"
+          className="block w-full py-4 text-amber-600 font-semibold hover:bg-amber-50 rounded-xl transition-all"
         >
           Volver a la tienda
         </Link>
@@ -56,7 +56,7 @@ function SuccessContent() {
 
 export default function SuccessPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-zinc-900 px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
       <Suspense fallback={<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-amber-600 mx-auto"></div>}>
         <SuccessContent />
       </Suspense>

@@ -1,21 +1,14 @@
 /* --- CONFIGURACIÓN DE TAIWIND --- */
 @import "tailwindcss";
 
-/* --- CONFIGURACIÓN ESTRATEGIA MODO OSCURO (TAILWIND 4) --- */
-/* Esto permite que las clases 'dark:' funcionen cuando hay una clase .dark en el <html> */
-@variant dark (&:where(.dark, .dark *));
+/* --- CONFIGURACIÓN ESTRATEGIA MODO OSCURO (ELIMINADO) --- */
+
 
 /* --- VARIABLES DE COLOR (TEMA CLARO Y OSCURO) --- */
 :root {
-  --background: #faef90; /* Fondo crema/amarillento elegido por el usuario */
+  --background: #fdfaf6;
   --foreground: #171717;
   color-scheme: light;
-}
-
-:root.dark {
-  --background: #000000;
-  --foreground: #ededed;
-  color-scheme: dark;
 }
 
 /* --- EXTENSIÓN DEL TEMA DE TAIWIND --- */

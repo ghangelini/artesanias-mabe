@@ -59,9 +59,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const displayImage = allImages[imageIndex] || allImages[0];
 
   return (
-    <div className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800">
+    <div className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
       <div
-        className="aspect-square relative overflow-hidden bg-gray-100 dark:bg-gray-800 cursor-zoom-in"
+        className="aspect-square relative overflow-hidden bg-gray-100 cursor-zoom-in"
         onClick={() => setIsModalOpen(true)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -107,19 +107,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
 
       <div className="p-4 flex flex-col h-[180px]">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1 line-clamp-1">{product.name}</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 line-clamp-2">
+        <h3 className="text-lg font-semibold text-gray-900 mb-1 line-clamp-1">{product.name}</h3>
+        <p className="text-sm text-gray-500 mb-4 line-clamp-2">
           {product.description || 'Artesanía hecha a mano con dedicación.'}
         </p>
 
         <div className="flex items-center justify-between mt-auto">
           <div className="flex flex-col">
             {product.originalPrice && product.originalPrice > product.price && (
-              <span className="text-sm text-gray-400 dark:text-gray-500 line-through">
+              <span className="text-sm text-gray-400 line-through">
                 ${product.originalPrice.toLocaleString('es-AR')}
               </span>
             )}
-            <span className="text-xl font-bold text-amber-900 dark:text-amber-500">
+            <span className="text-xl font-bold text-amber-900">
               ${product.price.toLocaleString('es-AR')}
             </span>
           </div>
@@ -129,7 +129,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()} // Evitar que el click se propague al card por si acaso
-              className="flex items-center gap-2 justify-center px-4 h-10 rounded-full bg-white dark:bg-zinc-800 border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all shadow-md text-sm font-bold whitespace-nowrap active:scale-95 group/btn"
+              className="flex items-center gap-2 justify-center px-4 h-10 rounded-full bg-white border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all shadow-md text-sm font-bold whitespace-nowrap active:scale-95 group/btn"
               title="Agotado - Consultar por WhatsApp"
             >
               <MessageCircle className="w-4 h-4 group-hover/btn:animate-pulse" />

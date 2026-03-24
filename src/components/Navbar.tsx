@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick }) => {
               alt="Artesanías Mabe Logo"
               className="h-16 w-auto object-contain"
             />
-            <span className="ml-3 text-2xl font-bold text-amber-900 dark:text-amber-500 tracking-tight hidden sm:block">
+            <span className="ml-3 text-2xl font-bold text-amber-900 tracking-tight hidden sm:block">
               Artesanías Mabe
             </span>
           </div>
@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick }) => {
           <div className="flex items-center gap-2">
             <button
               onClick={onCartClick}
-              className="relative p-2 text-amber-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
+              className="relative p-2 text-amber-900 hover:text-amber-700 transition-colors"
               aria-label="Ver carrito"
             >
               <ShoppingCart className="w-6 h-6" />

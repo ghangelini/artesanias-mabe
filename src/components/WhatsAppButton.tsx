@@ -29,7 +29,7 @@ const WhatsAppButton: React.FC = () => {
       </svg>
 
       {/* Tooltip opcional */}
-      <span className="absolute right-20 bg-white dark:bg-gray-800 text-gray-800 dark:text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-gray-100 dark:border-gray-700">
+      <span className="absolute right-20 bg-white text-gray-800 px-4 py-2 rounded-lg text-sm font-medium shadow-lg opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-gray-100">
         ¡Consultanos aquí!
       </span>
     </motion.a>
