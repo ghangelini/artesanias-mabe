@@ -11,7 +11,7 @@ function SuccessContent() {
   const externalReference = searchParams.get('external_reference');
 
   // Poner acá el número real de Whatsapp del vendedor (con código de país, ej 549112345678)
-  const phoneOwner = '5491169962617';
+  const phoneOwner = '5491163746491';
   const whatsappMessage = `¡Hola! Acabo de realizar una compra en Artesanías Mabe.%0A%0AMi ID de orden es: ${externalReference || paymentId || 'N/A'}.%0A%0ATe escribo para coordinar la entrega.`;
   const whatsappUrl = `https://wa.me/${phoneOwner}?text=${whatsappMessage}`;
 
