@@ -12,6 +12,7 @@ export interface Product {
   stock?: number;
   description?: string;
   isFeatured?: boolean;
+  order_index?: number;
 }
 
 export interface CartItem extends Product {

@@ -149,6 +149,24 @@ const getDefaultProducts = (): Product[] => [
     image: 'https://dcdn-us.mitiendanube.com/stores/006/219/336/products/tostadas-a098c6e8dcd282149217471812783729-480-0.webp',
     description: 'Plato ideal para desayunos o meriendas con estilo artesanal.',
   },
+  {
+    id: '20',
+    name: 'Taza Gato',
+    price: 15000,
+    image: '/images/products/taza_gato.jpg',
+    images: ['/images/products/taza_gato1.jpg'],
+    description: 'Taza de cerámica artesanal con diseño de gatito. ¡Ideal para tus mañanas!',
+    order_index: 20,
+  },
+  {
+    id: '21',
+    name: 'Taza Flor',
+    price: 15000,
+    image: '/images/products/taza_flor.jpg',
+    images: ['/images/products/taza_flor2.jpg'],
+    description: 'Taza artesanal con delicados diseños florales. Un toque de primavera en tu mesa.',
+    order_index: 21,
+  },
 ];
 
 export default function Home() {
@@ -163,7 +181,7 @@ export default function Home() {
         const { data, error } = await supabase
           .from('products')
           .select('*')
-          .order('is_featured', { ascending: false, nullsFirst: false });
+          .order('order_index', { ascending: true, nullsFirst: false });
 
         if (error) {
           throw error;
