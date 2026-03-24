@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: "4EF87__QQEuY7bRDx27Vr8-NUt4bTV3wvmcJTy-2AkM",
+  },
 };
 
 // --- ESTRUCTURA RAÍZ DE LA APLICACIÓN ---
