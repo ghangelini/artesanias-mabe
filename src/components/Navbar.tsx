@@ -16,9 +16,9 @@ const Navbar: React.FC<NavbarProps> = ({ onCartClick }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center pr-4">
-            <img 
-              src="https://dcdn-us.mitiendanube.com/stores/006/219/336/themes/common/logo-1450126375-1747102596-6d03055e1fe276ec41dab003ee36f7f41747102596-640-0.webp" 
-              alt="Artesanías Mabe Logo" 
+            <img
+              src="/images/logo_mabe.png"
+              alt="Artesanías Mabe Logo"
               className="h-16 w-auto object-contain"
             />
             <span className="ml-3 text-2xl font-bold text-amber-900 dark:text-amber-500 tracking-tight hidden sm:block">

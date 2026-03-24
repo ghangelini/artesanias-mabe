@@ -18,10 +18,22 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
-// --- METADATOS DEL SITIO (Seo, Título, Descripción) ---
 export const metadata: Metadata = {
-  title: "Artesanías Mabe | Tienda Oficial",
-  description: "Descubre las mejores artesanías hechas a mano. Tradición y calidad criolla.",
+  title: "Artesanías Mabe | Cerámica Artesanal y Decoración Hecha a Mano",
+  description: "Tienda online de Artesanías Mabe. Descubre cuencos, mates y piezas de cerámica únicas hechas a mano con amor en Argentina. Calidad artesanal para tu hogar.",
+  keywords: ["artesanías", "cerámica", "hecho a mano", "mates de cerámica", "cuencos artesanales", "decoración hogareña", "Mabe", "Argentina"],
+  openGraph: {
+    title: "Artesanías Mabe | Piezas Únicas de Cerámica",
+    description: "Cerámica artesanal con diseños exclusivos. Envíos a todo el país.",
+    url: "https://artesanias-mabe.vercel.app", // O tu dominio final
+    siteName: "Artesanías Mabe",
+    locale: "es_AR",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 // --- ESTRUCTURA RAÍZ DE LA APLICACIÓN ---

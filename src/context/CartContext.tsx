@@ -9,7 +9,7 @@ export interface Product {
   originalPrice?: number;
   image: string;
   images?: string[];
-  stock: number;
+  stock?: number;
   description?: string;
   isFeatured?: boolean;
 }

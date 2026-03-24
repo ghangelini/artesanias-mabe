@@ -82,11 +82,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {allImages.map((_, i) => (
               <span
                 key={i}
-                className={`block w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                  imageIndex === i
-                    ? 'bg-white scale-125'
-                    : 'bg-white/50'
-                }`}
+                className={`block w-1.5 h-1.5 rounded-full transition-all duration-300 ${imageIndex === i
+                  ? 'bg-white scale-125'
+                  : 'bg-white/50'
+                  }`}
               />
             ))}
           </div>
@@ -134,7 +133,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               title="Agotado - Consultar por WhatsApp"
             >
               <MessageCircle className="w-4 h-4 group-hover/btn:animate-pulse" />
-              <span>Sin Stock</span>
+              <span>Consultar YA !</span>
             </a>
           ) : (
             <button
