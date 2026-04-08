@@ -4,6 +4,7 @@ import "./globals.css";
 // Proveedor del carrito de compras (Context API)
 import { CartProvider } from "@/context/CartContext";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SplashScreen from "@/components/SplashScreen";
 
 // --- CONFIGURACIÓN DE FUENTES ---
 const inter = Inter({
@@ -48,6 +49,7 @@ export default function RootLayout({
       <body className="antialiased font-sans bg-white text-foreground transition-colors duration-300">
         {/* CartProvider envuelve a toda la app para que el carrito sea accesible desde cualquier página */}
         <CartProvider>
+          <SplashScreen />
           {children}
           <WhatsAppButton />
         </CartProvider>
