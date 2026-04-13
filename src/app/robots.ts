@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/admin/', // Evitar que Google indexe el panel de admin
     },
-    sitemap: 'https://artesanias-mabe.vercel.app/sitemap.xml',
+    sitemap: 'https://artesaniasmabe.com.ar/sitemap.xml',
   }
 }

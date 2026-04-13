@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Artesanías Mabe | Piezas Únicas de Cerámica",
     description: "Cerámica artesanal con diseños exclusivos. Envíos a todo el país.",
-    url: "https://artesanias-mabe.vercel.app", // O tu dominio final
+    url: "https://artesaniasmabe.com.ar",
     siteName: "Artesanías Mabe",
     locale: "es_AR",
     type: "website",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   verification: {
-    google: "4EF87__QQEuY7bRDx27Vr8-NUt4bTV3wvmcJTy-2AkM",
+    google: "mouZuODvdw7n_ZCkXKhgW1SHfd-yqaABhpwwg_KCFic",
   },
 };
 
